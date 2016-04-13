@@ -6,9 +6,9 @@ public class Pawn extends PlayingFigure {
 	public Pawn(int i, int j, boolean isWhite) {
 		super(i, j, isWhite);
 		if(this.isWhite){
-			this.icon = '\u2659';
+			this.icon = WHITE_PAWN;
 		} else {
-			this.icon = '\u265F';
+			this.icon = BLACK_PAWN;
 		}
 	}
 

@@ -4,9 +4,9 @@ public class Knight extends PlayingFigure {
 	public Knight(int i, int j, boolean isWhite) {
 		super(i, j, isWhite);
 		if(this.isWhite){
-			this.icon = '\u2658';
+			this.icon = WHITE_KNIGHT;
 		} else {
-			this.icon = '\u265E';
+			this.icon = BLACK_KNIGHT;
 		}
 	}
 

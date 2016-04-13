@@ -4,9 +4,9 @@ public class Bishop extends PlayingFigure {
 	public Bishop(int i, int j, boolean isWhite) {
 		super(i, j, isWhite);
 		if(this.isWhite){
-			this.icon = '\u2656';
+			this.icon = WHITE_BISHOP;
 		} else {
-			this.icon = '\u265C';
+			this.icon = BLACK_BISHOP;
 		}
 	}
 

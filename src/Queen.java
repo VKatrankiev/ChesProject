@@ -4,9 +4,9 @@ public class Queen extends PlayingFigure {
 	public Queen(int i, int j, boolean isWhite) {
 		super(i, j, isWhite);
 		if(this.isWhite){
-			this.icon = '\u2655';
+			this.icon = WHITE_QUEEN;
 		} else {
-			this.icon = '\u265B';
+			this.icon = BLACK_QUEEN;
 		}
 	}
 

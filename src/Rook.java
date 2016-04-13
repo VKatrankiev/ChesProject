@@ -4,9 +4,9 @@ public class Rook extends PlayingFigure {
 	public Rook(int i, int j, boolean isWhite) {
 		super(i, j, isWhite);
 		if(this.isWhite){
-			this.icon = '\u2657';
+			this.icon = WHITE_ROOK;
 		} else {
-			this.icon = '\u265D';
+			this.icon = BLACK_ROOK;
 		}
 	}
 

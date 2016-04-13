@@ -4,9 +4,9 @@ public class King extends PlayingFigure {
 	public King(int i, int j, boolean isWhite) {
 		super(i, j, isWhite);
 		if(this.isWhite){
-			this.icon = '\u2654';
+			this.icon = WHITE_KING;
 		} else {
-			this.icon = '\u265A';
+			this.icon = BLACK_KING;
 		}
 	}
 

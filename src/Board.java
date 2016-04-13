@@ -49,7 +49,7 @@ public class Board extends JFrame {
 		a8.setBorder(new LineBorder(new Color(0, 0, 0)));
 		a8.setContentAreaFilled(false);
 		a8.setBackground(Color.WHITE);
-		a8.setIcon(new ImageIcon("C:\\Users\\PC1\\workspace\\Chess\\src\\resources\\bishop_black.png"));
+		a8.setIcon(new ImageIcon("C:\\Users\\PC1\\Documents\\Chess\\src\\resources\\bishop_black.png"));
 		a8.setHorizontalTextPosition(SwingConstants.CENTER);
 		a8.setBounds(35, 25, 35, 35);
 		contentPane.add(a8);
@@ -59,7 +59,7 @@ public class Board extends JFrame {
 		b8.setContentAreaFilled(false);
 		b8.setBackground(Color.GRAY);
 		b8.setOpaque(true);
-		b8.setIcon(new ImageIcon("C:\\Users\\PC1\\workspace\\Chess\\src\\resources\\knight_black.png"));
+		b8.setIcon(new ImageIcon("C:\\Users\\PC1\\Documents\\Chess\\src\\resources\\knight_black.png"));
 		b8.setHorizontalTextPosition(SwingConstants.CENTER);
 		b8.setBounds(69, 25, 35, 35);
 		contentPane.add(b8);
@@ -68,7 +68,7 @@ public class Board extends JFrame {
 		c8.setBorder(new LineBorder(new Color(0, 0, 0)));
 		c8.setContentAreaFilled(false);
 		c8.setBackground(Color.WHITE);
-		c8.setIcon(new ImageIcon("C:\\Users\\PC1\\workspace\\Chess\\src\\resources\\rook_black.png"));
+		c8.setIcon(new ImageIcon("C:\\Users\\PC1\\Documents\\Chess\\src\\resources\\rook_black.png"));
 		c8.setHorizontalTextPosition(SwingConstants.CENTER);
 		c8.setBounds(103, 25, 35, 35);
 		contentPane.add(c8);
@@ -78,7 +78,7 @@ public class Board extends JFrame {
 		d8.setContentAreaFilled(false);
 		d8.setBackground(Color.GRAY);
 		d8.setOpaque(true);
-		d8.setIcon(new ImageIcon("C:\\Users\\PC1\\workspace\\Chess\\src\\resources\\queen_black.png"));
+		d8.setIcon(new ImageIcon("C:\\Users\\PC1\\Documents\\Chess\\src\\resources\\queen_black.png"));
 		d8.setHorizontalTextPosition(SwingConstants.CENTER);
 		d8.setBounds(137, 25, 35, 35);
 		contentPane.add(d8);
@@ -87,7 +87,7 @@ public class Board extends JFrame {
 		e8.setBorder(new LineBorder(new Color(0, 0, 0)));
 		e8.setContentAreaFilled(false);
 		e8.setBackground(Color.WHITE);
-		e8.setIcon(new ImageIcon("C:\\Users\\PC1\\workspace\\Chess\\src\\resources\\king_black.png"));
+		e8.setIcon(new ImageIcon("C:\\Users\\PC1\\Documents\\Chess\\src\\resources\\king_black.png"));
 		e8.setHorizontalTextPosition(SwingConstants.CENTER);
 		e8.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent arg0) {
@@ -101,7 +101,7 @@ public class Board extends JFrame {
 		f8.setContentAreaFilled(false);
 		f8.setBackground(Color.GRAY);
 		f8.setOpaque(true);
-		f8.setIcon(new ImageIcon("C:\\Users\\PC1\\workspace\\Chess\\src\\resources\\rook_black.png"));
+		f8.setIcon(new ImageIcon("C:\\Users\\PC1\\Documents\\Chess\\src\\resources\\rook_black.png"));
 		f8.setHorizontalTextPosition(SwingConstants.CENTER);
 		f8.setBounds(205, 25, 35, 35);
 		contentPane.add(f8);
@@ -110,7 +110,7 @@ public class Board extends JFrame {
 		g8.setBorder(new LineBorder(new Color(0, 0, 0)));
 		g8.setContentAreaFilled(false);
 		g8.setBackground(Color.WHITE);
-		g8.setIcon(new ImageIcon("C:\\Users\\PC1\\workspace\\Chess\\src\\resources\\knight_black.png"));
+		g8.setIcon(new ImageIcon("C:\\Users\\PC1\\Documents\\Chess\\src\\resources\\knight_black.png"));
 		g8.setHorizontalTextPosition(SwingConstants.CENTER);
 		g8.setBounds(239, 25, 35, 35);
 		contentPane.add(g8);
@@ -120,7 +120,7 @@ public class Board extends JFrame {
 		h8.setContentAreaFilled(false);
 		h8.setBackground(Color.GRAY);
 		h8.setOpaque(true);
-		h8.setIcon(new ImageIcon("C:\\Users\\PC1\\workspace\\Chess\\src\\resources\\bishop_black.png"));
+		h8.setIcon(new ImageIcon("C:\\Users\\PC1\\Documents\\Chess\\src\\resources\\bishop_black.png"));
 		h8.setHorizontalTextPosition(SwingConstants.CENTER);
 		h8.setBounds(273, 25, 35, 35);
 		contentPane.add(h8);
@@ -134,7 +134,7 @@ public class Board extends JFrame {
 			public void actionPerformed(ActionEvent e) {
 			}
 		});
-		a7.setIcon(new ImageIcon("C:\\Users\\PC1\\workspace\\Chess\\src\\resources\\pawn_black.png"));
+		a7.setIcon(new ImageIcon("C:\\Users\\PC1\\Documents\\Chess\\src\\resources\\pawn_black.png"));
 		a7.setHorizontalTextPosition(SwingConstants.CENTER);
 		a7.setBounds(35, 59, 35, 35);
 		contentPane.add(a7);
@@ -143,7 +143,7 @@ public class Board extends JFrame {
 		b7.setBorder(new LineBorder(new Color(0, 0, 0)));
 		b7.setContentAreaFilled(false);
 		b7.setBackground(Color.WHITE);
-		b7.setIcon(new ImageIcon("C:\\Users\\PC1\\workspace\\Chess\\src\\resources\\pawn_black.png"));
+		b7.setIcon(new ImageIcon("C:\\Users\\PC1\\Documents\\Chess\\src\\resources\\pawn_black.png"));
 		b7.setHorizontalTextPosition(SwingConstants.CENTER);
 		b7.setBounds(69, 59, 35, 35);
 		contentPane.add(b7);
@@ -153,7 +153,7 @@ public class Board extends JFrame {
 		c7.setContentAreaFilled(false);
 		c7.setBackground(Color.GRAY);
 		c7.setOpaque(true);
-		c7.setIcon(new ImageIcon("C:\\Users\\PC1\\workspace\\Chess\\src\\resources\\pawn_black.png"));
+		c7.setIcon(new ImageIcon("C:\\Users\\PC1\\Documents\\Chess\\src\\resources\\pawn_black.png"));
 		c7.setHorizontalTextPosition(SwingConstants.CENTER);
 		c7.setBounds(103, 59, 35, 35);
 		contentPane.add(c7);
@@ -162,7 +162,7 @@ public class Board extends JFrame {
 		d7.setBorder(new LineBorder(new Color(0, 0, 0)));
 		d7.setContentAreaFilled(false);
 		d7.setBackground(Color.WHITE);
-		d7.setIcon(new ImageIcon("C:\\Users\\PC1\\workspace\\Chess\\src\\resources\\pawn_black.png"));
+		d7.setIcon(new ImageIcon("C:\\Users\\PC1\\Documents\\Chess\\src\\resources\\pawn_black.png"));
 		d7.setHorizontalTextPosition(SwingConstants.CENTER);
 		d7.setBounds(137, 59, 35, 35);
 		contentPane.add(d7);
@@ -172,7 +172,7 @@ public class Board extends JFrame {
 		e7.setContentAreaFilled(false);
 		e7.setBackground(Color.GRAY);
 		e7.setOpaque(true);
-		e7.setIcon(new ImageIcon("C:\\Users\\PC1\\workspace\\Chess\\src\\resources\\pawn_black.png"));
+		e7.setIcon(new ImageIcon("C:\\Users\\PC1\\Documents\\Chess\\src\\resources\\pawn_black.png"));
 		e7.setHorizontalTextPosition(SwingConstants.CENTER);
 		e7.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent arg0) {
@@ -185,7 +185,7 @@ public class Board extends JFrame {
 		f7.setBorder(new LineBorder(new Color(0, 0, 0)));
 		f7.setContentAreaFilled(false);
 		f7.setBackground(Color.WHITE);
-		f7.setIcon(new ImageIcon("C:\\Users\\PC1\\workspace\\Chess\\src\\resources\\pawn_black.png"));
+		f7.setIcon(new ImageIcon("C:\\Users\\PC1\\Documents\\Chess\\src\\resources\\pawn_black.png"));
 		f7.setHorizontalTextPosition(SwingConstants.CENTER);
 		f7.setBounds(205, 59, 35, 35);
 		contentPane.add(f7);
@@ -195,7 +195,7 @@ public class Board extends JFrame {
 		g7.setContentAreaFilled(false);
 		g7.setBackground(Color.GRAY);
 		g7.setOpaque(true);
-		g7.setIcon(new ImageIcon("C:\\Users\\PC1\\workspace\\Chess\\src\\resources\\pawn_black.png"));
+		g7.setIcon(new ImageIcon("C:\\Users\\PC1\\Documents\\Chess\\src\\resources\\pawn_black.png"));
 		g7.setHorizontalTextPosition(SwingConstants.CENTER);
 		g7.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
@@ -208,7 +208,7 @@ public class Board extends JFrame {
 		h7.setBorder(new LineBorder(new Color(0, 0, 0)));
 		h7.setContentAreaFilled(false);
 		h7.setBackground(Color.WHITE);
-		h7.setIcon(new ImageIcon("C:\\Users\\PC1\\workspace\\Chess\\src\\resources\\pawn_black.png"));
+		h7.setIcon(new ImageIcon("C:\\Users\\PC1\\Documents\\Chess\\src\\resources\\pawn_black.png"));
 		h7.setHorizontalTextPosition(SwingConstants.CENTER);
 		h7.setBounds(273, 59, 35, 35);
 		contentPane.add(h7);
@@ -494,7 +494,7 @@ public class Board extends JFrame {
 		a2.setBorder(new LineBorder(new Color(0, 0, 0)));
 		a2.setContentAreaFilled(false);
 		a2.setBackground(Color.WHITE);
-		a2.setIcon(new ImageIcon("C:\\Users\\PC1\\workspace\\Chess\\src\\resources\\pawn_white.png"));
+		a2.setIcon(new ImageIcon("C:\\Users\\PC1\\Documents\\Chess\\src\\resources\\pawn_white.png"));
 		a2.setHorizontalTextPosition(SwingConstants.CENTER);
 		a2.setBounds(35, 229, 35, 35);
 		contentPane.add(a2);
@@ -504,7 +504,7 @@ public class Board extends JFrame {
 		b2.setContentAreaFilled(false);
 		b2.setBackground(Color.GRAY);
 		b2.setOpaque(true);
-		b2.setIcon(new ImageIcon("C:\\Users\\PC1\\workspace\\Chess\\src\\resources\\pawn_white.png"));
+		b2.setIcon(new ImageIcon("C:\\Users\\PC1\\Documents\\Chess\\src\\resources\\pawn_white.png"));
 		b2.setHorizontalTextPosition(SwingConstants.CENTER);
 		b2.setBounds(69, 229, 35, 35);
 		contentPane.add(b2);
@@ -513,7 +513,7 @@ public class Board extends JFrame {
 		c2.setBorder(new LineBorder(new Color(0, 0, 0)));
 		c2.setContentAreaFilled(false);
 		c2.setBackground(Color.WHITE);
-		c2.setIcon(new ImageIcon("C:\\Users\\PC1\\workspace\\Chess\\src\\resources\\pawn_white.png"));
+		c2.setIcon(new ImageIcon("C:\\Users\\PC1\\Documents\\Chess\\src\\resources\\pawn_white.png"));
 		c2.setHorizontalTextPosition(SwingConstants.CENTER);
 		c2.setBounds(103, 229, 35, 35);
 		contentPane.add(c2);
@@ -523,7 +523,7 @@ public class Board extends JFrame {
 		d2.setContentAreaFilled(false);
 		d2.setBackground(Color.GRAY);
 		d2.setOpaque(true);
-		d2.setIcon(new ImageIcon("C:\\Users\\PC1\\workspace\\Chess\\src\\resources\\pawn_white.png"));
+		d2.setIcon(new ImageIcon("C:\\Users\\PC1\\Documents\\Chess\\src\\resources\\pawn_white.png"));
 		d2.setHorizontalTextPosition(SwingConstants.CENTER);
 		d2.setBounds(137, 229, 35, 35);
 		contentPane.add(d2);
@@ -532,7 +532,7 @@ public class Board extends JFrame {
 		e2.setBorder(new LineBorder(new Color(0, 0, 0)));
 		e2.setContentAreaFilled(false);
 		e2.setBackground(Color.WHITE);
-		e2.setIcon(new ImageIcon("C:\\Users\\PC1\\workspace\\Chess\\src\\resources\\pawn_white.png"));
+		e2.setIcon(new ImageIcon("C:\\Users\\PC1\\Documents\\Chess\\src\\resources\\pawn_white.png"));
 		e2.setHorizontalTextPosition(SwingConstants.CENTER);
 		e2.setBounds(171, 229, 35, 35);
 		contentPane.add(e2);
@@ -542,7 +542,7 @@ public class Board extends JFrame {
 		f2.setContentAreaFilled(false);
 		f2.setBackground(Color.GRAY);
 		f2.setOpaque(true);
-		f2.setIcon(new ImageIcon("C:\\Users\\PC1\\workspace\\Chess\\src\\resources\\pawn_white.png"));
+		f2.setIcon(new ImageIcon("C:\\Users\\PC1\\Documents\\Chess\\src\\resources\\pawn_white.png"));
 		f2.setHorizontalTextPosition(SwingConstants.CENTER);
 		f2.setBounds(205, 229, 35, 35);
 		contentPane.add(f2);
@@ -551,7 +551,7 @@ public class Board extends JFrame {
 		g2.setBorder(new LineBorder(new Color(0, 0, 0)));
 		g2.setContentAreaFilled(false);
 		g2.setBackground(Color.WHITE);
-		g2.setIcon(new ImageIcon("C:\\Users\\PC1\\workspace\\Chess\\src\\resources\\pawn_white.png"));
+		g2.setIcon(new ImageIcon("C:\\Users\\PC1\\Documents\\Chess\\src\\resources\\pawn_white.png"));
 		g2.setHorizontalTextPosition(SwingConstants.CENTER);
 		g2.setBounds(239, 229, 35, 35);
 		contentPane.add(g2);
@@ -561,7 +561,7 @@ public class Board extends JFrame {
 		h2.setContentAreaFilled(false);
 		h2.setBackground(Color.GRAY);
 		h2.setOpaque(true);
-		h2.setIcon(new ImageIcon("C:\\Users\\PC1\\workspace\\Chess\\src\\resources\\pawn_white.png"));
+		h2.setIcon(new ImageIcon("C:\\Users\\PC1\\Documents\\Chess\\src\\resources\\pawn_white.png"));
 		h2.setHorizontalTextPosition(SwingConstants.CENTER);
 		h2.setBounds(273, 229, 35, 35);
 		contentPane.add(h2);
@@ -572,7 +572,7 @@ public class Board extends JFrame {
 		a1.setBackground(Color.GRAY);
 		a1.setOpaque(true);
 		a1.setHorizontalTextPosition(SwingConstants.CENTER);
-		a1.setIcon(new ImageIcon("C:\\Users\\PC1\\workspace\\Chess\\src\\resources\\bishop_white.png"));
+		a1.setIcon(new ImageIcon("C:\\Users\\PC1\\Documents\\Chess\\src\\resources\\bishop_white.png"));
 		a1.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 			}
@@ -585,7 +585,7 @@ public class Board extends JFrame {
 		b1.setContentAreaFilled(false);
 		b1.setBackground(Color.WHITE);
 		b1.setHorizontalTextPosition(SwingConstants.CENTER);
-		b1.setIcon(new ImageIcon("C:\\Users\\PC1\\workspace\\Chess\\src\\resources\\knight_white.png"));
+		b1.setIcon(new ImageIcon("C:\\Users\\PC1\\Documents\\Chess\\src\\resources\\knight_white.png"));
 		b1.setBounds(69, 263, 35, 35);
 		contentPane.add(b1);
 		
@@ -596,7 +596,7 @@ public class Board extends JFrame {
 		c1.setOpaque(true);
 		c1.setOpaque(true);
 		c1.setHorizontalTextPosition(SwingConstants.CENTER);
-		c1.setIcon(new ImageIcon("C:\\Users\\PC1\\workspace\\Chess\\src\\resources\\rook_white.png"));
+		c1.setIcon(new ImageIcon("C:\\Users\\PC1\\Documents\\Chess\\src\\resources\\rook_white.png"));
 		c1.setBounds(103, 263, 35, 35);
 		contentPane.add(c1);
 		
@@ -605,7 +605,7 @@ public class Board extends JFrame {
 		d1.setContentAreaFilled(false);
 		d1.setBackground(Color.WHITE);
 		d1.setHorizontalTextPosition(SwingConstants.CENTER);
-		d1.setIcon(new ImageIcon("C:\\Users\\PC1\\workspace\\Chess\\src\\resources\\queen_white.png"));
+		d1.setIcon(new ImageIcon("C:\\Users\\PC1\\Documents\\Chess\\src\\resources\\queen_white.png"));
 		d1.setBounds(137, 263, 35, 35);
 		contentPane.add(d1);
 		
@@ -615,7 +615,7 @@ public class Board extends JFrame {
 		e1.setBackground(Color.GRAY);
 		e1.setOpaque(true);
 		e1.setHorizontalTextPosition(SwingConstants.CENTER);
-		e1.setIcon(new ImageIcon("C:\\Users\\PC1\\workspace\\Chess\\src\\resources\\king_white.png"));
+		e1.setIcon(new ImageIcon("C:\\Users\\PC1\\Documents\\Chess\\src\\resources\\king_white.png"));
 		e1.setBounds(171, 263, 35, 35);
 		contentPane.add(e1);
 		
@@ -624,7 +624,7 @@ public class Board extends JFrame {
 		f1.setContentAreaFilled(false);
 		f1.setBackground(Color.WHITE);
 		f1.setHorizontalTextPosition(SwingConstants.CENTER);
-		f1.setIcon(new ImageIcon("C:\\Users\\PC1\\workspace\\Chess\\src\\resources\\rook_white.png"));
+		f1.setIcon(new ImageIcon("C:\\Users\\PC1\\Documents\\Chess\\src\\resources\\rook_white.png"));
 		f1.setBounds(205, 263, 35, 35);
 		contentPane.add(f1);
 		
@@ -633,7 +633,7 @@ public class Board extends JFrame {
 		g1.setContentAreaFilled(false);
 		g1.setBackground(Color.GRAY);
 		g1.setOpaque(true);		g1.setHorizontalTextPosition(SwingConstants.CENTER);
-		g1.setIcon(new ImageIcon("C:\\Users\\PC1\\workspace\\Chess\\src\\resources\\knight_white.png"));
+		g1.setIcon(new ImageIcon("C:\\Users\\PC1\\Documents\\Chess\\src\\resources\\knight_white.png"));
 		g1.setBounds(239, 263, 35, 35);
 		contentPane.add(g1);
 		
@@ -642,7 +642,7 @@ public class Board extends JFrame {
 		h1.setContentAreaFilled(false);
 		h1.setBackground(Color.WHITE);
 		h1.setHorizontalTextPosition(SwingConstants.CENTER);
-		h1.setIcon(new ImageIcon("C:\\Users\\PC1\\workspace\\Chess\\src\\resources\\bishop_white.png"));
+		h1.setIcon(new ImageIcon("C:\\Users\\PC1\\Documents\\Chess\\src\\resources\\bishop_white.png"));
 		h1.setBounds(273, 263, 35, 35);
 		contentPane.add(h1);
 		

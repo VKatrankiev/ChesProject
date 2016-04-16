@@ -31,6 +31,9 @@ public class PlayingFigure {
 
 	public void move(int x, int y) {
 		if (isMovePossible(x, y) && !this.isDead) {
+			if(!Board.board[x][y].getIcon().equals(null)){
+				this.destroy(Board.getPlayingFigure(x,y));
+			}
 			this.coordinateX = x;
 			this.coordinateY = y;
 		} else {
@@ -39,47 +42,70 @@ public class PlayingFigure {
 	}
 
 	protected boolean isMovePossible(int x, int y) {
-		return (x >= 0 || x < 8) && (y >= 0 || y < 8);
+		return (x >= 0 || x < 8) && (y >= 0 || y < 8) && !isSomethingInTheWay(x, y);
 	}
 
-	protected boolean isSomethingInTheWay(int x, int y) {
-		if (this.coordinateX == x) {
-			int tempY;
-			int tempYMin;
-			if (this.coordinateY > y) {
-				tempY = this.coordinateY;
-				tempYMin = y;
-			} else {
-				tempY = y;
-				tempYMin = this.coordinateY;
-			}
-			for (int i = tempYMin; i <= tempY; i++) {
-				if (!Board.board[x][i].getIcon().equals(null)) {
-					return false;
-				} else {
-					return true;
-				}
-			}
-		}
+	private boolean isSomethingInTheWay(int x, int y) {
+		return checkDiagonals(x, y) || checkHorizontal(x, y) || checkVertical(x, y) || checkForOppFigure(x, y);
+	}
+
+	private boolean checkHorizontal(int x, int y) {	
 		if (this.coordinateY == y) {
-			int tempX;
-			int tempXMin;
+
 			if (this.coordinateX > x) {
-				tempX = this.coordinateX;
-				tempXMin = x;
+				for (int i = this.coordinateX; i > x; i--) {
+					if (!Board.board[i][y].getIcon().equals(null)) {
+						return true;
+					} else {
+						return true;
+					}
+				}
 			} else {
-				tempX = x;
-				tempXMin = this.coordinateX;
-			}
-			for (int i = tempXMin; i <= tempX; i++) {
-				if (!Board.board[i][y].getIcon().equals(null)) {
-					return false;
-				} else {
-					return true;
+				for (int i = this.coordinateX; i < x; i++) {
+					if (!Board.board[i][y].getIcon().equals(null)) {
+						return  true;
+					} else {
+						return true;
+					}
 				}
 			}
 		}
-		return checkDiagonals(x,y);
+		return false;
+	}
+
+	private boolean checkVertical(int x, int y) {
+		boolean flag = false;
+		if (this.coordinateX == x) {
+			if (this.coordinateY > y) {
+				for (int i = this.coordinateY; i > y; i--) {
+					if (!Board.board[x][i].getIcon().equals(null)) {
+						flag = true;
+					} else {
+						flag = true;
+					}
+				}
+			} else {
+				for (int i = this.coordinateY; i < y; i++) {
+					if (!Board.board[x][i].getIcon().equals(null)) {
+						flag = true;
+					} else {
+						flag = true;
+					}
+				}
+			}
+		}
+		return flag;
+	}
+
+	private boolean checkForOppFigure(int x, int y) {
+		if (!Board.board[x][y].getIcon().equals(null)) {
+			if (this.isWhite) {
+				return (!Board.getPlayingFigure(x, y).isWhite);
+			} else {
+				return Board.getPlayingFigure(x, y).isWhite;
+			}
+		}
+
 	}
 
 	private boolean checkDiagonals(int x, int y) {
@@ -100,12 +126,12 @@ public class PlayingFigure {
 				}
 			}
 			if (x - y == this.coordinateX - this.coordinateY) {
-				if(this.coordinateX+i < 8 && this.coordinateY+i<8){
-					if(!Board.board[this.coordinateX + i][this.coordinateY + i].getIcon().equals(null)){
+				if (this.coordinateX + i < 8 && this.coordinateY + i < 8) {
+					if (!Board.board[this.coordinateX + i][this.coordinateY + i].getIcon().equals(null)) {
 						return false;
 					}
 				}
-				if(this.coordinateX-i >-1 && this.coordinateY-i>-1){
+				if (this.coordinateX - i > -1 && this.coordinateY - i > -1) {
 					if (!Board.board[this.coordinateX - i][this.coordinateY + i].getIcon().equals(null)) {
 						return false;
 					}
@@ -117,11 +143,9 @@ public class PlayingFigure {
 
 	protected void destroy(PlayingFigure figure) {
 		if (this.isMovePossible(figure.coordinateX, figure.coordinateY) && !this.isDead && !figure.isDead) {
-			this.move(figure.coordinateX, figure.coordinateY);
 			figure.isDead = true;
-			figure.coordinateX = deadX;
-			deadX--;
-			figure.coordinateY = -2;
+			Board.board[figure.coordinateX][figure.coordinateY]
+					.setIcon(Board.board[this.coordinateX][this.coordinateY].getIcon());
 		}
 	}
 

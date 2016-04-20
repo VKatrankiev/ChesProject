@@ -16,7 +16,7 @@ public class Board extends JFrame {
 
 	private JPanel contentPane;
 
-	public static JButton[][] board = new JButton[8][8];
+	public static ChessSquare[][] board = new ChessSquare[8][8];
 
 	/**
 	 * Launch the application.
@@ -664,7 +664,7 @@ public class Board extends JFrame {
 		// {h1, h2, h3, h4, h5, h6, h7, h8},
 		// };
 		//
-		ChessSquare[][] board = new ChessSquare[8][8];
+		//ChessSquare[][] board = new ChessSquare[8][8];
 
 		boolean flag = false;
 		int bound1 = 35;
@@ -795,7 +795,9 @@ public class Board extends JFrame {
 	}
 
 	public static PlayingFigure getPlayingFigure(int x, int y) {
-
+		if(x<8 && x> 0 && y<8 && y>0){
+			return board[x][y].getFigure();
+		}
 		return null;
 	}
 

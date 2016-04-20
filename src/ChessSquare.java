@@ -36,6 +36,12 @@ public class ChessSquare extends JButton {
 		this.icon = pF.icon;
 		//this.icon = new ImageIcon(pF.icon);
 	}
+	
+	
+
+	public void setFigure(PlayingFigure figure) {
+		this.figure = figure;
+	}
 
 	public boolean isHasFigure() {
 		return hasFigure;
@@ -57,8 +63,8 @@ public class ChessSquare extends JButton {
 		this.hasFigure = isTrue;
 	}
 
-	public boolean getFigure() {
-		return this.hasFigure;
+	public PlayingFigure getFigure() {
+		return this.figure;
 	}
 
 }

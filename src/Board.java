@@ -157,7 +157,7 @@ public class Board extends JFrame {
 		c7.setContentAreaFilled(false);
 		c7.setBackground(Color.GRAY);
 		c7.setOpaque(true);
-		c7.setIcon(new ImageIcon("C:\\Users\\Vlado\\workspace\\ChessProject\\src\\resources\\pawn_black.png"));
+		c7.setIcon(new ImageIcon("resources\\pawn_black.png"));
 		c7.setHorizontalTextPosition(SwingConstants.CENTER);
 		c7.setBounds(103, 59, 35, 35);
 		contentPane.add(c7);
@@ -662,4 +662,11 @@ public class Board extends JFrame {
 		};
 			      
 	}
+
+	public static PlayingFigure getPlayingFigure(int x, int y) {
+		
+		return null;
+	}
+	
+
 }

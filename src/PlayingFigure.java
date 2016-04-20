@@ -105,6 +105,7 @@ public class PlayingFigure {
 				return Board.getPlayingFigure(x, y).isWhite;
 			}
 		}
+		return false;
 
 	}
 

@@ -10,6 +10,11 @@ public class ChessSquare extends JButton {
 	private boolean hasFigure;
 	private PlayingFigure figure;
 	private String icon;
+	private static int counter = 0;
+	private int moveFromX;
+	private int moveFromY;
+	private int moveToX;
+	private int moveToY;
 	
 
 	public ChessSquare(int x, int y) {
@@ -18,12 +23,38 @@ public class ChessSquare extends JButton {
 		this.icon = PlayingFigure.EMPTY;
 	}
 	
-	public void clickListener(){
+	public void toFrom(int x, int y) {
+		if (counter == 0) {
+			moveFromX = x;
+			moveFromY = y;
+			counter++;
+		} else {
+			moveToX = x;
+			moveToY = y;
+			counter = 0;
+		}
+
+	}
+
+	
+	public void clickListener(int x, int y){
 		this.addActionListener(new ActionListener(){
 
 			@Override
 			public void actionPerformed(ActionEvent e) {
-				System.out.println(getIcone());
+				
+//				System.out.println(getIcone());
+				toFrom(x, y);
+				if(counter==0){
+//					if(isMovePossible(moveToX, moveToY) && !isSomethingOnTheWay){
+					move(moveFromX, moveFromY);
+//				}
+;
+					 }else{
+						 System.out.println("Where to move");
+					 }
+
+				
 				
 			}
 			

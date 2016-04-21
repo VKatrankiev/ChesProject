@@ -15,6 +15,7 @@ import javax.swing.border.LineBorder;
 public class Board extends JFrame {
 
 	private JPanel contentPane;
+	
 
 	public static ChessSquare[][] board = new ChessSquare[8][8];
 
@@ -50,7 +51,9 @@ public class Board extends JFrame {
 		contentPane.setBorder(new EmptyBorder(5, 5, 5, 5));
 		setContentPane(contentPane);
 		contentPane.setLayout(null);
-		//
+		
+		
+		
 		// JButton a8 = new JButton("");
 		// a8.setBorder(new LineBorder(new Color(0, 0, 0)));
 		// a8.setContentAreaFilled(false);
@@ -746,7 +749,7 @@ public class Board extends JFrame {
 				board[i][j].setBounds(bound1, bound2, 35, 35);
 				board[i][j].setIcon(new ImageIcon(board[i][j].getIcone()));
 				contentPane.add(board[i][j]);
-				board[i][j].clickListener();
+				board[i][j].clickListener(i,j);
 				bound1 += 34;
 			}
 			bound2 += 34;
@@ -886,6 +889,8 @@ public class Board extends JFrame {
 			popCheckMsg();
 		}
 	}
+	
+	
 
 	private void popCheckMsg() {
 		// TODO Auto-generated method stub

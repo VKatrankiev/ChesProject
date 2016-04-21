@@ -664,7 +664,7 @@ public class Board extends JFrame {
 		// {h1, h2, h3, h4, h5, h6, h7, h8},
 		// };
 		//
-		//ChessSquare[][] board = new ChessSquare[8][8];
+		// ChessSquare[][] board = new ChessSquare[8][8];
 
 		boolean flag = false;
 		int bound1 = 35;
@@ -795,29 +795,29 @@ public class Board extends JFrame {
 	}
 
 	public static PlayingFigure getPlayingFigure(int x, int y) {
-		if(x<8 && x> 0 && y<8 && y>0){
+		if (x < 8 && x > 0 && y < 8 && y > 0) {
 			return board[x][y].getFigure();
 		}
 		return null;
 	}
 
-	public boolean isCheckActive() {
+	public int[] isCheckActive() {
 		for (int i = 0; i < board.length; i++) {
 			for (int j = 0; j < board.length; j++) {
 				if (getPlayingFigure(i, j).icon.equals(PlayingFigure.BLACK_KING)) {
 					if (isKingThreatened(i, j, getPlayingFigure(i, j).isWhite)) {
-						return true;
+						return new int[] { 1, i, j };
 					}
 				}
 				if (getPlayingFigure(i, j).icon.equals(PlayingFigure.WHITE_KING)) {
 					if (isKingThreatened(i, j, getPlayingFigure(i, j).isWhite)) {
-						return true;
+						return new int[] { -1, i, j };
 					}
 				}
 
 			}
 		}
-		return false;
+		return new int[] { 0, 0, 0 };
 	}
 
 	private boolean isKingThreatened(int x, int y, boolean isWhite) {
@@ -833,12 +833,56 @@ public class Board extends JFrame {
 		return false;
 	}
 
-	private void mate() {
-
+//	private boolean mate() {
+//		if (isCheckActive()[0] == 1) {
+//			int x = isCheckActive()[1];
+//			int y = isCheckActive()[2];
+//			boolean move = areThereMoves(x,y);
+//			
+//			
+//			
+//		}
+//	}
+	
+	
+	
+	private boolean areThereMoves(int x, int y){
+		boolean [] moves = {false, false, false, false, false, false, false, false};
+		boolean flag = false;
+		if (getPlayingFigure(x, y).isMovePossible(x + 1, y)) {
+			moves[0] = isKingThreatened(x + 1, y, false);
+		}
+		if (getPlayingFigure(x, y).isMovePossible(x + 1, y + 1)) {
+			moves[1] = isKingThreatened(x + 1, y + 1, false);
+		}
+		if (getPlayingFigure(x, y).isMovePossible(x, y + 1)) {
+			moves[2] = isKingThreatened(x, y + 1, false);
+		}
+		if (getPlayingFigure(x, y).isMovePossible(x - 1, y)) {
+			moves[3] = isKingThreatened(x - 1, y, false);
+		}
+		if (getPlayingFigure(x, y).isMovePossible(x - 1, y - 1)) {
+			moves[4] = isKingThreatened(x - 1, y - 1, false);
+		}
+		if (getPlayingFigure(x, y).isMovePossible(x, y - 1)) {
+			moves[5] = isKingThreatened(x, y - 1, false);
+		}
+		if (getPlayingFigure(x, y).isMovePossible(x + 1, y - 1)) {
+			moves[6] = isKingThreatened(x + 1, y - 1, false);
+		}
+		if (getPlayingFigure(x, y).isMovePossible(x - 1, y + 1)) {
+			moves[7] = isKingThreatened(x - 1, y + 1, false);
+		}
+		for (boolean b : moves) {
+			if (b == true){
+				return b;
+			}
+		}
+		return flag;
 	}
 
 	private void check() {
-		if (isCheckActive()) {
+		if (isCheckActive()[0] == 1 || isCheckActive()[0] == -1) {
 			popCheckMsg();
 		}
 	}

@@ -2,7 +2,6 @@ import javax.swing.JButton;
 
 public class PlayingFigure {
 
-	
 	public static final String BLACK_PAWN = "src\\resources\\pawn_black.png";
 	public static final String BLACK_ROOK = "src\\resources\\rook_black.png";
 	public static final String BLACK_KNIGHT = "src\\resources\\knight_black.png";
@@ -37,8 +36,8 @@ public class PlayingFigure {
 
 	public void move(int x, int y) {
 		if (isMovePossible(x, y) && !this.isDead) {
-			if(!Board.board[x][y].getIcon().equals(EMPTY)){
-				this.destroy(Board.getPlayingFigure(x,y));
+			if (!Board.board[x][y].getIcon().equals(EMPTY)) {
+				this.destroy(Board.getPlayingFigure(x, y));
 			}
 			this.coordinateX = x;
 			this.coordinateY = y;
@@ -48,14 +47,15 @@ public class PlayingFigure {
 	}
 
 	protected boolean isMovePossible(int x, int y) {
-		return (x >= 0 || x < 8) && (y >= 0 || y < 8) && !isSomethingInTheWay(x, y);
+		return x != this.coordinateX && y != this.coordinateY && (x >= 0 || x < 8) && (y >= 0 || y < 8)
+				&& !isSomethingInTheWay(x, y);
 	}
 
 	private boolean isSomethingInTheWay(int x, int y) {
 		return checkDiagonals(x, y) || checkHorizontal(x, y) || checkVertical(x, y) || checkForOppFigure(x, y);
 	}
 
-	private boolean checkHorizontal(int x, int y) {	
+	private boolean checkHorizontal(int x, int y) {
 		if (this.coordinateY == y) {
 
 			if (this.coordinateX > x) {
@@ -69,7 +69,7 @@ public class PlayingFigure {
 			} else {
 				for (int i = this.coordinateX; i < x; i++) {
 					if (!Board.board[i][y].getIcon().equals(EMPTY)) {
-						return  true;
+						return true;
 					} else {
 						return true;
 					}

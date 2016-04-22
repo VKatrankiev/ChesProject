@@ -34,7 +34,7 @@ public class Pawn extends PlayingFigure {
 		if (!this.isMoved) {
 			System.out.println();
 			System.out.println("it's not moved \n" + x + " " + y + "\n " + this.coordinateX + " " + this.coordinateY);
-			if ((x - this.coordinateX == dist || x - this.coordinateX == 2 * dist) && y == this.coordinateY
+			if ((x - this.coordinateX == dist || x - this.coordinateX == 2 * dist && !Board.board[x][y].getFigure().isAFigure) && y == this.coordinateY
 					&& super.isMovePossible(x, y)) {
 				System.out.println("move can be done1");
 				
@@ -42,13 +42,11 @@ public class Pawn extends PlayingFigure {
 			}
 		} else {
 			System.out.println("it is moved");
-			if (x - this.coordinateX == dist && y == this.coordinateY && super.isMovePossible(x, y)) {
+			if (x - this.coordinateX == dist && y == this.coordinateY && super.isMovePossible(x, y) && !Board.board[x][y].getFigure().isAFigure) {
 				System.out.println("move can be done2");
 				return true;
 			}
 		}
-		System.out.println("going where shouldnt");
-		
 		return canDestroy(x, y, dist);
 
 	}

@@ -43,20 +43,6 @@ public class ChessSquare extends JButton {
 				} else {
 					getNextTurn(false);
 				}
-				
-				
-				// if (!icon.equals(PlayingFigure.EMPTY)){
-				// Board.getPlayingFigure(0, 0).move(getFigure().coordinateX,
-				// getFigure().coordinateY);
-				// Board.board[getFigure().coordinateX][getFigure().coordinateY]
-				// = Board.board[0][0];
-				// Board.board[getFigure().coordinateX][getFigure().coordinateY]
-				// .setIcon(new ImageIcon(Board.board[0][0].getIcone()));
-				// Board.board[0][0].setFigure(new EmptyFigure(0, 0, false));
-				// Board.board[0][0].setIcon(new
-				// ImageIcon(PlayingFigure.EMPTY));
-				// }
-
 			}
 			private void getNextTurn (boolean isWhite) {
 				if (figure.isAFigure) {
@@ -91,7 +77,9 @@ public class ChessSquare extends JButton {
 						Board.board[thisX][thisY].setIcon(new ImageIcon(Board.board[thisX][thisY].getFigure().icon));
 						Board.board[x][y].setFigure(new EmptyFigure(x,y,false));
 						Board.board[x][y].setIcon(new ImageIcon(PlayingFigure.EMPTY));
-						
+						if (Board.isCheckActive()[0]==1 || Board.isCheckActive()[0]==-1 ){
+							System.out.println("CHECK!");
+						}
 						turnWhite = !turnWhite;
 					}
 				}

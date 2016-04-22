@@ -49,9 +49,7 @@ public class PlayingFigure {
 	}
 
 	private boolean isSomethingInTheWay(int x, int y) {
-		return checkHorizontal(x, y) || checkVertical(x, y) || checkDiagonals(x, y); // ||
-																						// //!checkForOppFigure(x,
-																						// y);
+		return checkHorizontal(x, y) || checkVertical(x, y) || checkDiagonals(x, y); 
 
 	}
 
@@ -101,17 +99,17 @@ public class PlayingFigure {
 		return false;
 	}
 
-	private boolean checkForOppFigure(int x, int y) {
-		if (!Board.board[x][y].getFigure().icon.equals(EMPTY)) {
-			if (this.isWhite) {
-				return (!Board.getPlayingFigure(x, y).isWhite);
-			} else {
-				return Board.getPlayingFigure(x, y).isWhite;
-			}
-		}
-		return false;
-
-	}
+//	private boolean checkForOppFigure(int x, int y) {
+//		if (!Board.board[x][y].getFigure().icon.equals(EMPTY)) {
+//			if (this.isWhite) {
+//				return (!Board.getPlayingFigure(x, y).isWhite);
+//			} else {
+//				return Board.getPlayingFigure(x, y).isWhite;
+//			}
+//		}
+//		return false;
+//
+//	}
 
 	// TODO Fix cheDiagonals....
 

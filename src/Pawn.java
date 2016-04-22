@@ -20,7 +20,7 @@ public class Pawn extends PlayingFigure {
 
 	@Override
 	protected boolean isMovePossible(int x, int y) {
-		return colorMove(this.isWhite, x, y);
+		return colorMove(this.isWhite, x, y) && super.isMovePossible(x, y);
 	}
 
 	private boolean colorMove(boolean isWhite, int x, int y) {
@@ -30,13 +30,14 @@ public class Pawn extends PlayingFigure {
 		} else {
 			dist = 1;
 		}
+		
 		if (!this.isMoved) {
 			System.out.println();
 			System.out.println("it's not moved \n" + x + " " + y + "\n " + this.coordinateX + " " + this.coordinateY);
 			if ((x - this.coordinateX == dist || x - this.coordinateX == 2 * dist) && y == this.coordinateY
 					&& super.isMovePossible(x, y)) {
 				System.out.println("move can be done1");
-				this.isMoved = true;
+				
 				return true;
 			}
 		} else {
@@ -46,14 +47,22 @@ public class Pawn extends PlayingFigure {
 				return true;
 			}
 		}
+		System.out.println("going where shouldnt");
+		
 		return canDestroy(x, y, dist);
 
+	}
+	
+	@Override
+	public void move(int x, int y){
+		super.move(x, y);
+		this.isMoved = true;
 	}
 
 	private boolean canDestroy(int x, int y, int dist) {
 		if (Board.board[x][y].getFigure().isAFigure && Board.board[x][y].getFigure().isWhite != this.isWhite) {
 			System.out.println("they are different");
-			if (y - this.coordinateY == dist && Math.abs(x - this.coordinateX) == dist) {
+			if (x - this.coordinateX == dist && Math.abs(y - this.coordinateY) == 1) {
 				System.out.println("can destroy");
 				return true;
 			}

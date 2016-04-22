@@ -689,7 +689,7 @@ public class Board extends JFrame {
 						board[i][j] = new ChessSquare(new Queen(i, j, false));
 						break;
 					case 4:
-						board[i][j] = new ChessSquare(new King(0, 1, false));
+						board[i][j] = new ChessSquare(new King(i, j, false));
 						break;
 					default:
 						board[i][j] = new ChessSquare(i, j);
@@ -716,7 +716,7 @@ public class Board extends JFrame {
 						board[i][j] = new ChessSquare(new Queen(i, j, true));
 						break;
 					case 4:
-						board[i][j] = new ChessSquare(new King(0, 1, true));
+						board[i][j] = new ChessSquare(new King(i, j, true));
 						break;
 					default:
 						board[i][j] = new ChessSquare(i, j);
@@ -744,7 +744,7 @@ public class Board extends JFrame {
 				board[i][j].setOpaque(true);
 				board[i][j].setHorizontalTextPosition(SwingConstants.CENTER);
 				board[i][j].setBounds(bound1, bound2, 35, 35);
-				board[i][j].setIcon(new ImageIcon(board[i][j].getIcone()));
+				board[i][j].setIcon(new ImageIcon(board[i][j].getFigure().icon));
 				contentPane.add(board[i][j]);
 				board[i][j].clickListener();
 				bound1 += 34;
@@ -795,7 +795,7 @@ public class Board extends JFrame {
 	}
 
 	public static PlayingFigure getPlayingFigure(int x, int y) {
-		if (x < 8 && x > 0 && y < 8 && y > 0) {
+		if (x < 8 && x >= 0 && y < 8 && y >= 0) {
 			return board[x][y].getFigure();
 		}
 		return null;

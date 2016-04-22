@@ -13,6 +13,6 @@ public class King extends PlayingFigure {
 	@Override
 	protected boolean isMovePossible(int x, int y) {
 		return super.isMovePossible(x, y)
-				&& (Math.abs(x - this.coordinateX) == 1 || Math.abs(y - this.coordinateY) == 1);
+				&& (Math.abs(x - this.coordinateX) <= 1 &&  Math.abs(y - this.coordinateY) <= 1 );
 	}
 }

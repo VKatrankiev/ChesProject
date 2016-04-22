@@ -1,3 +1,4 @@
+import javax.swing.ImageIcon;
 import javax.swing.JButton;
 
 public class PlayingFigure {
@@ -36,9 +37,6 @@ public class PlayingFigure {
 
 	public void move(int x, int y) {
 		if (isMovePossible(x, y) && !this.isDead) {
-			if (!Board.board[x][y].getIcon().equals(EMPTY)) {
-				this.destroy(Board.getPlayingFigure(x, y));
-			}
 			this.coordinateX = x;
 			this.coordinateY = y;
 		} else {
@@ -47,30 +45,31 @@ public class PlayingFigure {
 	}
 
 	protected boolean isMovePossible(int x, int y) {
-		return x != this.coordinateX && y != this.coordinateY && (x >= 0 || x < 8) && (y >= 0 || y < 8)
-				&& !isSomethingInTheWay(x, y);
+		return (x >= 0 || x < 8) && (y >= 0 || y < 8) && !isSomethingInTheWay(x, y);
 	}
 
 	private boolean isSomethingInTheWay(int x, int y) {
-		return checkDiagonals(x, y) || checkHorizontal(x, y) || checkVertical(x, y) || checkForOppFigure(x, y);
+		return checkHorizontal(x, y) || checkVertical(x, y) || checkDiagonals(x, y); // ||
+																						// //!checkForOppFigure(x,
+																						// y);
+
 	}
 
 	private boolean checkHorizontal(int x, int y) {
 		if (this.coordinateY == y) {
-
 			if (this.coordinateX > x) {
-				for (int i = this.coordinateX; i > x; i--) {
-					if (!Board.board[i][y].getIcon().equals(EMPTY)) {
-						return true;
-					} else {
+				for (int i = this.coordinateX - 1; i > x; i--) {
+					if (!Board.board[i][y].getFigure().icon.equals(EMPTY)) {
+						System.out.println(Board.board[i][y].getFigure().icon + " " + EMPTY);
+						System.out.println("trueHorizontal1");
 						return true;
 					}
 				}
 			} else {
-				for (int i = this.coordinateX; i < x; i++) {
-					if (!Board.board[i][y].getIcon().equals(EMPTY)) {
-						return true;
-					} else {
+				for (int i = this.coordinateX + 1; i < x; i++) {
+					if (!Board.board[i][y].getFigure().icon.equals(EMPTY)) {
+						System.out.println(Board.board[i][y].getFigure().icon + " " + EMPTY);
+						System.out.println("trueHorizontal2");
 						return true;
 					}
 				}
@@ -80,31 +79,30 @@ public class PlayingFigure {
 	}
 
 	private boolean checkVertical(int x, int y) {
-		boolean flag = false;
 		if (this.coordinateX == x) {
 			if (this.coordinateY > y) {
-				for (int i = this.coordinateY; i > y; i--) {
-					if (!Board.board[x][i].getIcon().equals(EMPTY)) {
-						flag = true;
-					} else {
-						flag = true;
+				for (int i = this.coordinateY - 1; i > y; i--) {
+					if (!Board.board[x][i].getFigure().icon.equals(EMPTY)) {
+						System.out.println("truevertical1");
+						System.out.println(Board.board[x][i].getFigure().icon + " " + EMPTY);
+						return true;
 					}
 				}
 			} else {
-				for (int i = this.coordinateY; i < y; i++) {
-					if (!Board.board[x][i].getIcon().equals(EMPTY)) {
-						flag = true;
-					} else {
-						flag = true;
+				for (int i = this.coordinateY + 1; i < y; i++) {
+					if (!Board.board[x][i].getFigure().icon.equals(EMPTY)) {
+						System.out.println("truevertical2");
+						System.out.println(Board.board[x][i].getFigure().icon + " " + EMPTY);
+						return true;
 					}
 				}
 			}
 		}
-		return flag;
+		return false;
 	}
 
 	private boolean checkForOppFigure(int x, int y) {
-		if (!Board.board[x][y].getIcon().equals(EMPTY)) {
+		if (!Board.board[x][y].getFigure().icon.equals(EMPTY)) {
 			if (this.isWhite) {
 				return (!Board.getPlayingFigure(x, y).isWhite);
 			} else {
@@ -115,45 +113,71 @@ public class PlayingFigure {
 
 	}
 
+	// TODO Fix cheDiagonals....
+
 	private boolean checkDiagonals(int x, int y) {
 
-		for (int i = 0; i < Math.abs(x - this.coordinateX); i++) {
+		for (int i = 1; i < Math.abs(this.coordinateX - x); i++) {
 			if (x + y == this.coordinateX + this.coordinateY) {
-				if (i <= x + y) {
-					if (this.coordinateX + i < 8 && this.coordinateY - i > -1) {
-						if (!Board.board[this.coordinateX + i][this.coordinateY - i].getIcon().equals(EMPTY)) {
-							return false;
+				if (i < x + y) {
+					if (this.coordinateX < x) {
+						if (this.coordinateX + i < 8 && this.coordinateY - i > -1) {
+							System.out.println((this.coordinateX + i) + " " + (this.coordinateY - i));
+							System.out.println(Board.board[this.coordinateX + i][this.coordinateY - i].getFigure().icon
+									+ " " + EMPTY);
+							if (!Board.board[this.coordinateX + i][this.coordinateY - i].getFigure().icon
+									.equals(EMPTY)) {
+								System.out.println("diagonl11");
+								return true;
+							}
 						}
-					}
-					if (this.coordinateX - i > -1 && this.coordinateY + i < 8) {
-						if (!Board.board[this.coordinateX - i][this.coordinateY + i].getIcon().equals(EMPTY)) {
-							return false;
+					} else if (this.coordinateX - i > -1 && this.coordinateY + i < 8) {
+						System.out.println((this.coordinateX - i) + " " + (this.coordinateY + i));
+						System.out.println(
+								Board.board[this.coordinateX - i][this.coordinateY + i].getFigure().icon + " " + EMPTY);
+						if (!Board.board[this.coordinateX - i][this.coordinateY + i].getFigure().icon.equals(EMPTY)) {
+							System.out.println("digonal12");
+							return true;
 						}
 					}
 				}
+
 			}
 			if (x - y == this.coordinateX - this.coordinateY) {
-				if (this.coordinateX + i < 8 && this.coordinateY + i < 8) {
-					if (!Board.board[this.coordinateX + i][this.coordinateY + i].getIcon().equals(EMPTY)) {
-						return false;
+				if (x > this.coordinateX) {
+					// if (i < Math.abs(this.coordinateX - x)) {
+					if (this.coordinateX + i < 8 && this.coordinateY + i < 8) {
+
+						System.out.println((this.coordinateX + i) + " " + (this.coordinateY + i));
+
+						System.out.println(
+								Board.board[this.coordinateX + i][this.coordinateY + i].getFigure().icon + " " + EMPTY);
+						if (!Board.board[this.coordinateX + i][this.coordinateY + i].getFigure().icon.equals(EMPTY)) {
+							System.out.println("diagonal21");
+							return true;
+						}
+						// }
 					}
-				}
-				if (this.coordinateX - i > -1 && this.coordinateY - i > -1) {
-					if (!Board.board[this.coordinateX - i][this.coordinateY + i].getIcon().equals(EMPTY)) {
-						return false;
+				} else {
+					// if (i < Math.abs(this.coordinateX - x)) {
+					if (this.coordinateX - i > -1 && this.coordinateY - i > -1) {
+
+						System.out.println((this.coordinateX - i) + " " + (this.coordinateY - i));
+
+						System.out.println(
+								Board.board[this.coordinateX - i][this.coordinateY - i].getFigure().icon + " " + EMPTY);
+						if (!Board.board[this.coordinateX - i][this.coordinateY - i].getFigure().icon.equals(EMPTY)) {
+							System.out.println("diagonal22");
+							return true;
+						}
 					}
+					// }
 				}
 			}
 		}
-		return true;
+		return false;
 	}
 
-	protected void destroy(PlayingFigure figure) {
-		if (this.isMovePossible(figure.coordinateX, figure.coordinateY) && !this.isDead && !figure.isDead) {
-			figure.isDead = true;
-			Board.board[figure.coordinateX][figure.coordinateY]
-					.setIcon(Board.board[this.coordinateX][this.coordinateY].getIcon());
-		}
-	}
+	
 
 }

@@ -31,6 +31,10 @@ public class ChessSquare extends JButton {
 
 	}
 
+	public boolean isFigWhite() {
+		return figure.isWhite;
+	}
+
 	public void clickListener() {
 		this.addActionListener(new ActionListener() {
 			@Override

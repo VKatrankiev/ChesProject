@@ -1,5 +1,8 @@
+import java.awt.Color;
+
 import javax.swing.ImageIcon;
 import javax.swing.JButton;
+import javax.swing.border.LineBorder;
 
 public class PlayingFigure {
 
@@ -35,6 +38,11 @@ public class PlayingFigure {
 		}
 	}
 
+	public void border(int x, int y) {
+		Board.board[x][y].setBorder(new LineBorder(new Color(50, 205, 50), 2));
+
+	}
+
 	public void move(int x, int y) {
 		if (isMovePossible(x, y) && !this.isDead) {
 			this.coordinateX = x;
@@ -44,12 +52,22 @@ public class PlayingFigure {
 		}
 	}
 
+	public void possibleMoves() {
+		for (int i = 0; i < 8; i++) {
+			for (int j = 0; j < 8; j++) {
+				if (isMovePossible(i, j) && !Board.board[i][j].isFigWhite() == this.isWhite) {
+					border(i, j);
+				}
+			}
+		}
+	}
+
 	protected boolean isMovePossible(int x, int y) {
 		return (x >= 0 || x < 8) && (y >= 0 || y < 8) && !isSomethingInTheWay(x, y);
 	}
 
 	private boolean isSomethingInTheWay(int x, int y) {
-		return checkHorizontal(x, y) || checkVertical(x, y) || checkDiagonals(x, y); 
+		return checkHorizontal(x, y) || checkVertical(x, y) || checkDiagonals(x, y);
 
 	}
 
@@ -99,17 +117,17 @@ public class PlayingFigure {
 		return false;
 	}
 
-//	private boolean checkForOppFigure(int x, int y) {
-//		if (!Board.board[x][y].getFigure().icon.equals(EMPTY)) {
-//			if (this.isWhite) {
-//				return (!Board.getPlayingFigure(x, y).isWhite);
-//			} else {
-//				return Board.getPlayingFigure(x, y).isWhite;
-//			}
-//		}
-//		return false;
-//
-//	}
+	// private boolean checkForOppFigure(int x, int y) {
+	// if (!Board.board[x][y].getFigure().icon.equals(EMPTY)) {
+	// if (this.isWhite) {
+	// return (!Board.getPlayingFigure(x, y).isWhite);
+	// } else {
+	// return Board.getPlayingFigure(x, y).isWhite;
+	// }
+	// }
+	// return false;
+	//
+	// }
 
 	// TODO Fix cheDiagonals....
 
@@ -175,7 +193,5 @@ public class PlayingFigure {
 		}
 		return false;
 	}
-
-	
 
 }

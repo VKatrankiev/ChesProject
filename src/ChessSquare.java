@@ -5,11 +5,12 @@ import java.awt.event.ActionListener;
 import javax.swing.Icon;
 import javax.swing.ImageIcon;
 import javax.swing.JButton;
+import javax.swing.border.LineBorder;
 
 public class ChessSquare extends JButton {
 
 	private PlayingFigure figure;
-
+	private String icon;
 	private static boolean clicked = false;
 	private static int xA;
 	private static int yA;
@@ -33,8 +34,14 @@ public class ChessSquare extends JButton {
 
 	public void clickListener() {
 		this.addActionListener(new ActionListener() {
+			
 			@Override
 			public void actionPerformed(ActionEvent e) {
+				for(int i = 0; i<8; i++){
+					for (int j=0; j<8;j++){
+						Board.board[i][j].setBorder(new LineBorder(new Color(0, 0, 0)));
+					}
+				}
 				if (turnWhite) {
 					getNextTurn(true);
 				} else {
@@ -44,6 +51,7 @@ public class ChessSquare extends JButton {
 
 			private void getNextTurn(boolean isWhite) {
 				if (figure.isAFigure) {
+					figure.possibleMoves();
 					System.out.println(figure.icon);
 					if (getFigure().isWhite == isWhite) {
 						System.out.println("it is white");
@@ -54,14 +62,21 @@ public class ChessSquare extends JButton {
 						System.out.println(xA + " " + yA + " " + figure.icon);
 					} else {
 						moveFigure();
+						figure.possibleMoves();
 					}
 				} else {
 					System.out.println(figure.coordinateX + " " + figure.coordinateY + " " + figure.icon);
 					moveFigure();
+					for(int i = 0; i<8; i++){
+						for (int j=0; j<8;j++){
+							Board.board[i][j].setBorder(new LineBorder(new Color(0, 0, 0)));
+						}
+					}
 					clicked = false;
 				}
 
 			}
+			
 
 			private void moveFigure() {
 				if (clicked) {
@@ -114,6 +129,11 @@ public class ChessSquare extends JButton {
 		turnWhite = !turnWhite;
 
 	}
+    public String getIcon(int x, int y){
+		
+		return Board.board[x][y].icon;
+	}
+	
 
 	public void setFigure(PlayingFigure figure) {
 		this.figure = figure;

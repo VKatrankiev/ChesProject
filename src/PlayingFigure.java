@@ -20,7 +20,6 @@ public class PlayingFigure {
 	public static final String WHITE_KING = "src\\resources\\king_white.png";
 	public static final String EMPTY = "empty";
 
-	static byte deadX = -2;
 	int coordinateX;
 	int coordinateY;
 	boolean isDead;

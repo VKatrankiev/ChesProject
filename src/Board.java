@@ -29,25 +29,11 @@ public class Board extends JFrame {
 	}
 
 	public Board() {
-		setTitle("CHESS");
-		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-		setBounds(100, 100, 450, 370);
-		contentPane = new JPanel();
-		contentPane.setBackground(Color.WHITE);
-		contentPane.setBorder(new EmptyBorder(5, 5, 5, 5));
-		setContentPane(contentPane);
-		contentPane.setLayout(null);
-		
-		
-		check.setHorizontalAlignment(SwingConstants.CENTER);
-		check.setFont(new Font("Tahoma", Font.PLAIN, 14));
-		check.setBounds(314, 57, 86, 22);
-		contentPane.add(check);
-		
-		
-		turn.setFont(new Font("Tahoma", Font.PLAIN, 13));
-		turn.setBounds(314, 24, 93, 14);
-		contentPane.add(turn);
+		init();
+	}
+
+	private void init() {
+		getGeneralDetails();
 
 		boolean flag = false;
 		int bound1 = 35;
@@ -93,6 +79,28 @@ public class Board extends JFrame {
 			bound2 += 34;
 			bound1 = 35;
 		}
+	}
+
+	private void getGeneralDetails() {
+		setTitle("CHESS");
+		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+		setBounds(100, 100, 450, 370);
+		contentPane = new JPanel();
+		contentPane.setBackground(Color.WHITE);
+		contentPane.setBorder(new EmptyBorder(5, 5, 5, 5));
+		setContentPane(contentPane);
+		contentPane.setLayout(null);
+		
+		
+		check.setHorizontalAlignment(SwingConstants.CENTER);
+		check.setFont(new Font("Tahoma", Font.PLAIN, 14));
+		check.setBounds(314, 57, 86, 22);
+		contentPane.add(check);
+		
+		
+		turn.setFont(new Font("Tahoma", Font.PLAIN, 13));
+		turn.setBounds(314, 24, 93, 14);
+		contentPane.add(turn);
 	}
 
 	private void getFigures(int i, int j, boolean flag) {

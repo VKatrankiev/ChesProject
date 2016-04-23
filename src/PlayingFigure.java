@@ -55,7 +55,7 @@ public class PlayingFigure {
 	public void possibleMoves() {
 		for (int i = 0; i < 8; i++) {
 			for (int j = 0; j < 8; j++) {
-				if (isMovePossible(i, j) && !Board.board[i][j].isFigWhite() == this.isWhite) {
+				if (isMovePossible(i, j) && !Board.board[i][j].isFigWhite() == this.isWhite && Board.board[i][j].turnWhite) {
 					border(i, j);
 				}
 			}
@@ -193,5 +193,6 @@ public class PlayingFigure {
 		}
 		return false;
 	}
+	
 
 }

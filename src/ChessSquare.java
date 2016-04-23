@@ -5,6 +5,7 @@ import java.awt.event.ActionListener;
 import javax.swing.Icon;
 import javax.swing.ImageIcon;
 import javax.swing.JButton;
+import javax.swing.border.LineBorder;
 
 public class ChessSquare extends JButton {
 
@@ -18,7 +19,7 @@ public class ChessSquare extends JButton {
 	private static PlayingFigure figureA;
 	private static PlayingFigure figureB;
 
-	private static boolean turnWhite = true;
+	static boolean turnWhite = true;
 
 	public ChessSquare(int a, int b) {
 
@@ -39,6 +40,11 @@ public class ChessSquare extends JButton {
 		this.addActionListener(new ActionListener() {
 			@Override
 			public void actionPerformed(ActionEvent e) {
+				for(int i = 0; i<8; i++){
+					for (int j=0; j<8;j++){
+						Board.board[i][j].setBorder(new LineBorder(new Color(0, 0, 0)));
+					}
+				}
 				if (turnWhite) {
 					getNextTurn(true);
 				} else {
@@ -48,6 +54,7 @@ public class ChessSquare extends JButton {
 
 			private void getNextTurn(boolean isWhite) {
 				if (figure.isAFigure) {
+					figure.possibleMoves();
 					System.out.println(figure.icon);
 					if (getFigure().isWhite == isWhite) {
 						System.out.println("it is white");
@@ -58,6 +65,7 @@ public class ChessSquare extends JButton {
 						System.out.println(xA + " " + yA + " " + figure.icon);
 					} else {
 						moveFigure();
+						figure.possibleMoves();
 					}
 				} else {
 					System.out.println(figure.coordinateX + " " + figure.coordinateY + " " + figure.icon);
@@ -88,7 +96,12 @@ public class ChessSquare extends JButton {
 							reverseMove();
 						}
 						if (Board.isCheckActive()[0] == 1 || Board.isCheckActive()[0] == -1) {
-							System.out.println("CHECK!");
+//							System.out.println("CHECK!");
+							Board.lblNewLabel.setText("CHECK!");
+							Board.lblNewLabel.setVisible(true);
+							Board.contentPane.add(Board.lblNewLabel);
+						}else{
+							Board.lblNewLabel.setVisible(false);
 						}
 						turnWhite = !turnWhite;
 					}
@@ -126,6 +139,68 @@ public class ChessSquare extends JButton {
 
 	public PlayingFigure getFigure() {
 		return this.figure;
+	}
+	
+	private static boolean someMethod(boolean flag) {
+		for (int i = 0; i < Board.board.length; i++) {
+			for (int j = 0; j < Board.board.length; j++) {
+				if (Board.board[i][j].getFigure().isAFigure && !Board.board[i][j].getFigure().isDead
+						&& Board.board[i][j].getFigure().isWhite == flag) {
+					for (int k = 0; k < Board.board.length; k++) {
+						for (int l = 0; l < Board.board.length; l++) {
+							if (Board.board[i][j].getFigure().isMovePossible(k, l)) {
+								int xA = i;
+								int yA = j;
+								int xB = k;
+								int yB = l;
+								PlayingFigure figureA = Board.board[i][j].getFigure();
+								PlayingFigure figureB = Board.board[k][l].getFigure();
+
+								Board.board[i][j].getFigure().move(k, l);
+								Board.board[k][l].setFigure(Board.board[i][j].getFigure());
+								Board.board[k][l].setIcon(new ImageIcon(Board.board[k][l].getFigure().icon));
+								Board.board[i][j].setFigure(new EmptyFigure(i, j, false));
+								Board.board[i][j].setIcon(new ImageIcon(PlayingFigure.EMPTY));
+								if (Board.isCheckActive()[0] == 0) {
+									Board.board[xA][yA].setFigure(new EmptyFigure(xA, yA, false));
+									Board.board[xA][yA].setIcon(new ImageIcon(PlayingFigure.EMPTY));
+
+									Board.board[xB][yB].setFigure(new EmptyFigure(xB, yB, false));
+									Board.board[xB][yB].setIcon(new ImageIcon(PlayingFigure.EMPTY));
+
+									figureA.coordinateX = xA;
+									figureA.coordinateY = yA;
+									Board.board[xA][yA].setFigure(figureA);
+									Board.board[xA][yA].setIcon(new ImageIcon(figureA.icon));
+
+									figureB.coordinateX = xB;
+									figureB.coordinateY = yB;
+									Board.board[xB][yB].setFigure(figureB);
+									Board.board[xB][yB].setIcon(new ImageIcon(figureB.icon));
+									return true;
+								}
+								Board.board[xA][yA].setFigure(new EmptyFigure(xA, yA, false));
+								Board.board[xA][yA].setIcon(new ImageIcon(PlayingFigure.EMPTY));
+
+								Board.board[xB][yB].setFigure(new EmptyFigure(xB, yB, false));
+								Board.board[xB][yB].setIcon(new ImageIcon(PlayingFigure.EMPTY));
+
+								figureA.coordinateX = xA;
+								figureA.coordinateY = yA;
+								Board.board[xA][yA].setFigure(figureA);
+								Board.board[xA][yA].setIcon(new ImageIcon(figureA.icon));
+
+								figureB.coordinateX = xB;
+								figureB.coordinateY = yB;
+								Board.board[xB][yB].setFigure(figureB);
+								Board.board[xB][yB].setIcon(new ImageIcon(figureB.icon));
+							}
+						}
+					}
+				}
+			}
+		}
+		return false;
 	}
 
 }

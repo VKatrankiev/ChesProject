@@ -11,12 +11,15 @@ import javax.swing.ImageIcon;
 import javax.swing.SwingConstants;
 import java.awt.Color;
 import javax.swing.border.LineBorder;
+import javax.swing.JLabel;
+import java.awt.Font;
 
 public class Board extends JFrame {
 
-	private JPanel contentPane;
+	public static JPanel contentPane;
 
 	public static ChessSquare[][] board = new ChessSquare[8][8];
+	public static JLabel lblNewLabel = new JLabel("");
 
 	/**
 	 * Launch the application.
@@ -50,93 +53,18 @@ public class Board extends JFrame {
 		contentPane.setBorder(new EmptyBorder(5, 5, 5, 5));
 		setContentPane(contentPane);
 		contentPane.setLayout(null);
+		
+		
+		lblNewLabel.setVisible(false);
+		lblNewLabel.setFont(new Font("Tahoma", Font.PLAIN, 14));
+		lblNewLabel.setHorizontalAlignment(SwingConstants.CENTER);
+		lblNewLabel.setBounds(319, 24, 105, 37);
+		contentPane.add(lblNewLabel);
 
-		boolean flag = false;
-		int bound1 = 35;
-		int bound2 = 25;
-		for (int i = 0; i < board.length; i++) {
-			for (int j = 0; j < board.length; j++) {
-				if (i == 0) {
-					switch (j) {
-					case 0:
-					case 7:
-						board[i][j] = new ChessSquare(new Rook(i, j, false));
-						break;
-					case 1:
-					case 6:
-						board[i][j] = new ChessSquare(new Knight(i, j, false));
-						break;
-					case 2:
-					case 5:
-						board[i][j] = new ChessSquare(new Bishop(i, j, false));
-						break;
-					case 3:
-						board[i][j] = new ChessSquare(new Queen(i, j, false));
-						break;
-					case 4:
-						board[i][j] = new ChessSquare(new King(i, j, false));
-						break;
-					default:
-						board[i][j] = new ChessSquare(i, j);
-					}
-				} else if (i == 1) {
-					board[i][j] = new ChessSquare(new Pawn(i, j, false));
-				} else if (i == 6) {
-					board[i][j] = new ChessSquare(new Pawn(i, j, true));
-				} else if (i == 7) {
-					switch (j) {
-					case 0:
-					case 7:
-						board[i][j] = new ChessSquare(new Rook(i, j, true));
-						break;
-					case 1:
-					case 6:
-						board[i][j] = new ChessSquare(new Knight(i, j, true));
-						break;
-					case 2:
-					case 5:
-						board[i][j] = new ChessSquare(new Bishop(i, j, true));
-						break;
-					case 3:
-						board[i][j] = new ChessSquare(new Queen(i, j, true));
-						break;
-					case 4:
-						board[i][j] = new ChessSquare(new King(i, j, true));
-						break;
-					default:
-						board[i][j] = new ChessSquare(i, j);
-					}
-				} else {
-					board[i][j] = new ChessSquare(i, j);
-				}
-
-				board[i][j].setBorder(new LineBorder(new Color(0, 0, 0)));
-				board[i][j].setContentAreaFilled(false);
-				if (flag) {
-					flag = false;
-					board[i][j].setBackground(Color.WHITE);
-				} else {
-					flag = true;
-					board[i][j].setBackground(Color.GRAY);
-				}
-				if (j == board.length - 1) {
-					if (flag) {
-						flag = false;
-					} else {
-						flag = true;
-					}
-				}
-				board[i][j].setOpaque(true);
-				board[i][j].setHorizontalTextPosition(SwingConstants.CENTER);
-				board[i][j].setBounds(bound1, bound2, 35, 35);
-				board[i][j].setIcon(new ImageIcon(board[i][j].getFigure().icon));
-				contentPane.add(board[i][j]);
-				board[i][j].clickListener();
-				bound1 += 34;
-			}
-			bound2 += 34;
-			bound1 = 35;
-		}
+		
+		loadBoard();
+		
+			
 	}
 
 	public static PlayingFigure getPlayingFigure(int x, int y) {
@@ -232,9 +160,97 @@ public class Board extends JFrame {
 		}
 	}
 
-	private void popCheckMsg() {
-		// TODO Auto-generated method stub
+	public void popCheckMsg() {
 
 	}
+	
+	private void loadBoard(){
+		boolean flag = false;
+		int bound1 = 35;
+		int bound2 = 25;
+		for (int i = 0; i < board.length; i++) {
+			for (int j = 0; j < board.length; j++) {
+				if (i == 0) {
+					switch (j) {
+					case 0:
+					case 7:
+						board[i][j] = new ChessSquare(new Rook(i, j, false));
+						break;
+					case 1:
+					case 6:
+						board[i][j] = new ChessSquare(new Knight(i, j, false));
+						break;
+					case 2:
+					case 5:
+						board[i][j] = new ChessSquare(new Bishop(i, j, false));
+						break;
+					case 3:
+						board[i][j] = new ChessSquare(new Queen(i, j, false));
+						break;
+					case 4:
+						board[i][j] = new ChessSquare(new King(i, j, false));
+						break;
+					default:
+						board[i][j] = new ChessSquare(i, j);
+					}
+				} else if (i == 1) {
+					board[i][j] = new ChessSquare(new Pawn(i, j, false));
+				} else if (i == 6) {
+					board[i][j] = new ChessSquare(new Pawn(i, j, true));
+				} else if (i == 7) {
+					switch (j) {
+					case 0:
+					case 7:
+						board[i][j] = new ChessSquare(new Rook(i, j, true));
+						break;
+					case 1:
+					case 6:
+						board[i][j] = new ChessSquare(new Knight(i, j, true));
+						break;
+					case 2:
+					case 5:
+						board[i][j] = new ChessSquare(new Bishop(i, j, true));
+						break;
+					case 3:
+						board[i][j] = new ChessSquare(new Queen(i, j, true));
+						break;
+					case 4:
+						board[i][j] = new ChessSquare(new King(i, j, true));
+						break;
+					default:
+						board[i][j] = new ChessSquare(i, j);
+					}
+				} else {
+					board[i][j] = new ChessSquare(i, j);
+				}
+			
+				board[i][j].setBorder(new LineBorder(new Color(0, 0, 0)));
+				board[i][j].setContentAreaFilled(false);
+				if (flag) {
+					flag = false;
+					board[i][j].setBackground(Color.WHITE);
+				} else {
+					flag = true;
+					board[i][j].setBackground(Color.GRAY);
+				}
+				if (j == board.length - 1) {
+					if (flag) {
+						flag = false;
+					} else {
+						flag = true;
+					}
+				}
+				board[i][j].setOpaque(true);
+				board[i][j].setHorizontalTextPosition(SwingConstants.CENTER);
+				board[i][j].setBounds(bound1, bound2, 35, 35);
+				board[i][j].setIcon(new ImageIcon(board[i][j].getFigure().icon));
+				contentPane.add(board[i][j]);
+				board[i][j].clickListener();
+				bound1 += 34;
+			}
+			bound2 += 34;
+			bound1 = 35;
+			}
+		}
+	}
 
-}

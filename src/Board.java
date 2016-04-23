@@ -11,34 +11,21 @@ import javax.swing.ImageIcon;
 import javax.swing.SwingConstants;
 import java.awt.Color;
 import javax.swing.border.LineBorder;
+import javax.swing.JLabel;
+import java.awt.Font;
 
 public class Board extends JFrame {
 
-	private JPanel contentPane;
+	public static JPanel contentPane;
 
 	public static ChessSquare[][] board = new ChessSquare[8][8];
+	public static JLabel check = new JLabel("");
+	public static JLabel turn = new JLabel("It's whites turn.");
 
-	/**
-	 * Launch the application.
-	 */
-	public static void main(String[] args) {
-		EventQueue.invokeLater(new Runnable() {
-			public void run() {
-				try {
-					Board frame = new Board();
-					frame.setVisible(true);
-				} catch (Exception e) {
-					e.printStackTrace();
-				}
-			}
-		});
-	}
 
-	/**
-	 * Create the frame.
-	 */
 	public static void createNewBoard() {
 		Board board = new Board();
+		board.setVisible(true);
 	}
 
 	public Board() {
@@ -50,6 +37,17 @@ public class Board extends JFrame {
 		contentPane.setBorder(new EmptyBorder(5, 5, 5, 5));
 		setContentPane(contentPane);
 		contentPane.setLayout(null);
+		
+		
+		check.setHorizontalAlignment(SwingConstants.CENTER);
+		check.setFont(new Font("Tahoma", Font.PLAIN, 14));
+		check.setBounds(314, 57, 86, 22);
+		contentPane.add(check);
+		
+		
+		turn.setFont(new Font("Tahoma", Font.PLAIN, 13));
+		turn.setBounds(314, 24, 93, 14);
+		contentPane.add(turn);
 
 		boolean flag = false;
 		int bound1 = 35;
@@ -57,55 +55,13 @@ public class Board extends JFrame {
 		for (int i = 0; i < board.length; i++) {
 			for (int j = 0; j < board.length; j++) {
 				if (i == 0) {
-					switch (j) {
-					case 0:
-					case 7:
-						board[i][j] = new ChessSquare(new Rook(i, j, false));
-						break;
-					case 1:
-					case 6:
-						board[i][j] = new ChessSquare(new Knight(i, j, false));
-						break;
-					case 2:
-					case 5:
-						board[i][j] = new ChessSquare(new Bishop(i, j, false));
-						break;
-					case 3:
-						board[i][j] = new ChessSquare(new Queen(i, j, false));
-						break;
-					case 4:
-						board[i][j] = new ChessSquare(new King(i, j, false));
-						break;
-					default:
-						board[i][j] = new ChessSquare(i, j);
-					}
+					getFigures(i, j, false);
 				} else if (i == 1) {
 					board[i][j] = new ChessSquare(new Pawn(i, j, false));
 				} else if (i == 6) {
 					board[i][j] = new ChessSquare(new Pawn(i, j, true));
 				} else if (i == 7) {
-					switch (j) {
-					case 0:
-					case 7:
-						board[i][j] = new ChessSquare(new Rook(i, j, true));
-						break;
-					case 1:
-					case 6:
-						board[i][j] = new ChessSquare(new Knight(i, j, true));
-						break;
-					case 2:
-					case 5:
-						board[i][j] = new ChessSquare(new Bishop(i, j, true));
-						break;
-					case 3:
-						board[i][j] = new ChessSquare(new Queen(i, j, true));
-						break;
-					case 4:
-						board[i][j] = new ChessSquare(new King(i, j, true));
-						break;
-					default:
-						board[i][j] = new ChessSquare(i, j);
-					}
+					getFigures(i, j, true);
 				} else {
 					board[i][j] = new ChessSquare(i, j);
 				}
@@ -136,6 +92,31 @@ public class Board extends JFrame {
 			}
 			bound2 += 34;
 			bound1 = 35;
+		}
+	}
+
+	private void getFigures(int i, int j, boolean flag) {
+		switch (j) {
+		case 0:
+		case 7:
+			board[i][j] = new ChessSquare(new Rook(i, j, flag));
+			break;
+		case 1:
+		case 6:
+			board[i][j] = new ChessSquare(new Knight(i, j, flag));
+			break;
+		case 2:
+		case 5:
+			board[i][j] = new ChessSquare(new Bishop(i, j, flag));
+			break;
+		case 3:
+			board[i][j] = new ChessSquare(new Queen(i, j, flag));
+			break;
+		case 4:
+			board[i][j] = new ChessSquare(new King(i, j, flag));
+			break;
+		default:
+			board[i][j] = new ChessSquare(i, j);
 		}
 	}
 
@@ -226,15 +207,8 @@ public class Board extends JFrame {
 		return flag;
 	}
 
-	private void check() {
-		if (isCheckActive()[0] == 1 || isCheckActive()[0] == -1) {
-			popCheckMsg();
-		}
-	}
 
-	private void popCheckMsg() {
-		// TODO Auto-generated method stub
 
-	}
+	
 
 }

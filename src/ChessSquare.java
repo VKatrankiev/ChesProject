@@ -5,6 +5,7 @@ import java.awt.event.ActionListener;
 import javax.swing.Icon;
 import javax.swing.ImageIcon;
 import javax.swing.JButton;
+import javax.swing.border.LineBorder;
 
 public class ChessSquare extends JButton {
 
@@ -25,6 +26,16 @@ public class ChessSquare extends JButton {
 		this.figure = new EmptyFigure(a, b, false);
 
 	}
+	
+	private void isWhiteTurn(){
+		if(turnWhite){
+			Board.turn.setText("It's whites turn");
+		}else{
+			Board.turn.setText("It's blacks turn");
+		}
+		
+	}
+	
 
 	public ChessSquare(PlayingFigure pF) {
 		this.figure = pF;
@@ -41,28 +52,34 @@ public class ChessSquare extends JButton {
 			public void actionPerformed(ActionEvent e) {
 				if (turnWhite) {
 					getNextTurn(true);
+					
 				} else {
 					getNextTurn(false);
 				}
 			}
 
 			private void getNextTurn(boolean isWhite) {
+				isWhiteTurn();
 				if (figure.isAFigure) {
-					System.out.println(figure.icon);
+					figure.possibleMoves();
 					if (getFigure().isWhite == isWhite) {
-						System.out.println("it is white");
 						clicked = true;
 						xA = getFigure().coordinateX;
 						yA = getFigure().coordinateY;
 						figureA = getFigure();
-						System.out.println(xA + " " + yA + " " + figure.icon);
 					} else {
 						moveFigure();
+						figure.possibleMoves();
 					}
 				} else {
-					System.out.println(figure.coordinateX + " " + figure.coordinateY + " " + figure.icon);
 					moveFigure();
+					for(int i = 0; i<8; i++){
+						for (int j=0; j<8;j++){
+							Board.board[i][j].setBorder(new LineBorder(new Color(0, 0, 0)));
+						}
+					}
 					clicked = false;
+					
 				}
 
 			}
@@ -70,12 +87,10 @@ public class ChessSquare extends JButton {
 			private void moveFigure() {
 				if (clicked) {
 					int a = turnWhite ? -1 : 1;
-					System.out.println("clicked");
 					xB = getFigure().coordinateX;
 					yB = getFigure().coordinateY;
 					figureB = getFigure();
 					if (Board.getPlayingFigure(xA, yA).isMovePossible(xB, yB)) {
-						System.out.println("move is possible");
 						clicked = false;
 						Board.board[xA][yA].getFigure().move(xB, yB);
 						Board.board[xB][yB].setFigure(Board.board[xA][yA].getFigure());
@@ -83,12 +98,13 @@ public class ChessSquare extends JButton {
 						Board.board[xA][yA].setFigure(new EmptyFigure(xA, yA, false));
 						Board.board[xA][yA].setIcon(new ImageIcon(PlayingFigure.EMPTY));
 
-						System.out.println(Board.isCheckActive()[0] + "*" + a);
 						if (Board.isCheckActive()[0] == a) {
 							reverseMove();
 						}
 						if (Board.isCheckActive()[0] == 1 || Board.isCheckActive()[0] == -1) {
-							System.out.println("CHECK!");
+							Board.check.setText("CHECK!");
+							Board.check.setVisible(true);
+							Board.contentPane.add(Board.check);
 						}
 						turnWhite = !turnWhite;
 					}
